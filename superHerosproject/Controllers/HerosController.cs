@@ -19,7 +19,7 @@ namespace superHerosproject.Controllers
         // GET: Heros
         public ActionResult Index()
         {
-            var heros = db.heros;
+            var heros = db.Superheros;
             return View(heros);
         }
 
@@ -38,14 +38,13 @@ namespace superHerosproject.Controllers
         // POST: Heros/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SuperHero heros)
+        public ActionResult Create(SuperHero superHero)
         {
             try
             {
-                // TODO: Add insert logic here
-                SuperHero hero = new SuperHero();
+                // TODO: Add insert logic here  
+                db.Superheros.Add(superHero);
                 db.SaveChanges();
-
                 return RedirectToAction(nameof(Index));
             }
             catch
