@@ -9,10 +9,10 @@ namespace superHerosproject.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        public DbSet<SuperHero>Heros { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+        public DbSet<SuperHero> heros { get; set; }
     }
 }

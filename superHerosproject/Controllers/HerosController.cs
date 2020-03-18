@@ -4,16 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using superHerosproject.Data;
 using superHerosproject.Models;
 
 namespace superHerosproject.Controllers
 {
     public class HerosController : Controller
     {
+        public ApplicationDbContext db;
+        public HerosController(ApplicationDbContext context)
+        {
+            db = context;
+        }
         // GET: Heros
         public ActionResult Index()
         {
-            return View();
+            var heros = db.heros;
+            return View(heros);
         }
 
         // GET: Heros/Details/5
@@ -25,8 +32,7 @@ namespace superHerosproject.Controllers
         // GET: Heros/Create
         public ActionResult Create()
         {
-            SuperHero heros = new SuperHero();
-            return View(heros);
+            return View();
         }
 
         // POST: Heros/Create
@@ -37,6 +43,8 @@ namespace superHerosproject.Controllers
             try
             {
                 // TODO: Add insert logic here
+                SuperHero hero = new SuperHero();
+                db.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -49,6 +57,7 @@ namespace superHerosproject.Controllers
         // GET: Heros/Edit/5
         public ActionResult Edit(int id)
         {
+          
             return View();
         }
 
@@ -60,6 +69,7 @@ namespace superHerosproject.Controllers
             try
             {
                 // TODO: Add update logic here
+
 
                 return RedirectToAction(nameof(Index));
             }

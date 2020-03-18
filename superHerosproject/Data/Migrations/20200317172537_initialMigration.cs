@@ -7,7 +7,7 @@ namespace superHerosproject.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "People",
+                name: "Heros",
                 columns: table => new
                 {
                     superHeroName = table.Column<string>(nullable: false),
@@ -18,14 +18,14 @@ namespace superHerosproject.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_People", x => x.superHeroName);
+                    table.PrimaryKey("PK_Heros", x => x.superHeroName);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "People");
+                name: "Heros");
         }
     }
 }
